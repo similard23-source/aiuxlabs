@@ -1,9 +1,13 @@
 import type { APIRoute } from 'astro';
-import { supabaseServer } from '@/lib/supabaseServer';
+import { hasSupabaseServerEnv, supabaseServer } from '@/lib/supabaseServer';
 
 export const prerender = false;
 
 export const POST: APIRoute = async ({ request, cookies, url }) => {
+  if (!hasSupabaseServerEnv || !supabaseServer) {
+    return new Response(JSON.stringify({ error: 'Supabase env vars are missing on server.' }), { status: 500 });
+  }
+
   const { email, password } = await request.json();
 
   if (!email || !password) {

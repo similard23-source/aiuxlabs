@@ -1,11 +1,19 @@
 import type { MiddlewareHandler } from 'astro';
-import { supabaseServer } from '@/lib/supabaseServer';
+import { hasSupabaseServerEnv, supabaseServer } from '@/lib/supabaseServer';
 
 const AUTH_ONLY_ROUTES = ['/dashboard'];
 const GUEST_ONLY_ROUTES = ['/login', '/signup'];
 
 export const onRequest: MiddlewareHandler = async (context, next) => {
   const pathname = context.url.pathname;
+
+  if (!hasSupabaseServerEnv || !supabaseServer) {
+    if (AUTH_ONLY_ROUTES.includes(pathname)) {
+      return context.redirect('/login');
+    }
+    return next();
+  }
+
   const accessToken = context.cookies.get('sb-access-token')?.value;
 
   let isAuthed = false;
