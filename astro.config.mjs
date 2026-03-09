@@ -5,7 +5,8 @@ import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://www.aiuxslabs.com',
+  trailingSlash: 'never',
   output: 'server',
   adapter: vercel(),
   integrations: [tailwind(), react(), sitemap()],
