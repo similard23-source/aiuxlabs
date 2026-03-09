@@ -1,0 +1,58 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import FAQSection from '@/components/sections/FAQSection.astro';
+import TrustBlock from '@/components/sections/TrustBlock.astro';
+import ComparisonSection from '@/components/sections/ComparisonSection.astro';
+import InternalLinksSection from '@/components/sections/InternalLinksSection.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+import SopGenerator from '@/components-islands/SopGenerator';
+import LeadCaptureForm from '@/components-islands/LeadCaptureForm';
+import { sopGeneratorLanding } from '@/content/landings/sop-generator';
+import { faqSchema } from '@/lib/schema';
+---
+<MainLayout title={sopGeneratorLanding.seo.title} description={sopGeneratorLanding.seo.description} canonicalPath={sopGeneratorLanding.seo.canonical}>
+  <JsonLd data={faqSchema(sopGeneratorLanding.faq)} />
+  <HeroSection {...sopGeneratorLanding.hero} />
+
+  <section id="generator" class="mt-8"><h2 class="mb-3 text-2xl font-semibold">Generator</h2><SopGenerator client:load /></section>
+
+  <section class="mt-8 rounded-lg border border-slate-200 bg-white p-5">
+    <h2 class="text-2xl font-semibold">Templates library</h2>
+    <ul class="mt-3 list-disc pl-5 text-slate-700">
+      <li>Lead handoff SOP</li>
+      <li>Inbound support SOP</li>
+      <li>Content publishing SOP</li>
+      <li>Ecommerce order issue SOP</li>
+    </ul>
+  </section>
+
+  <section class="mt-8 rounded-lg border border-slate-200 bg-white p-5">
+    <h2 class="text-2xl font-semibold">Quality controls</h2>
+    <ul class="mt-3 list-disc pl-5 text-slate-700">
+      <li>Definition of done</li>
+      <li>SLA and exception handling</li>
+    </ul>
+  </section>
+
+  <section class="mt-8 rounded-lg border border-slate-200 bg-white p-5">
+    <h2 class="text-2xl font-semibold">Export options</h2>
+    <ul class="mt-3 list-disc pl-5 text-slate-700">
+      <li>Notion copy</li>
+      <li>Google Doc format</li>
+      <li>Markdown download</li>
+    </ul>
+  </section>
+
+  <div class="mt-8"><ComparisonSection title="Manual docs vs SOP generator" manual={["Inconsistent format", "Harder QA reviews"]} tool={["Standardized structure", "Faster team onboarding"]} /></div>
+  <div class="mt-8"><TrustBlock text="Review generated SOP drafts with process owners before formal rollout." /></div>
+
+  <section class="mt-8 rounded-xl bg-brand-700 p-8 text-white">
+    <h2 class="text-2xl font-semibold">Get 10 custom SOP templates for your team</h2>
+    <p class="mt-2 text-brand-50">Leave your email and we will share template pack recommendations.</p>
+    <LeadCaptureForm client:load sourcePage="/sop-generator" buttonLabel="Get SOP templates" />
+  </section>
+
+  <div class="mt-8"><FAQSection items={sopGeneratorLanding.faq} /></div>
+  <div class="mt-8"><InternalLinksSection items={sopGeneratorLanding.internalLinks} /></div>
+</MainLayout>

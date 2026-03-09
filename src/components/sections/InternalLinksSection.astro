@@ -1,0 +1,15 @@
+---
+interface Props {
+  items: Array<{ label: string; href: string }>;
+}
+
+const { items } = Astro.props;
+---
+<section>
+  <h2 class="text-2xl font-semibold">Related tools</h2>
+  <ul class="mt-3 list-disc pl-5">
+    {items.map((item) => (
+      <li><a href={item.href}>{item.label}</a></li>
+    ))}
+  </ul>
+</section>

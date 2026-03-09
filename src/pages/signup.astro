@@ -1,0 +1,10 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import AuthShell from '@/components/auth/AuthShell.astro';
+import SignupForm from '@/components-islands/SignupForm';
+---
+<MainLayout title="Sign up | AIUXSLABS" description="Create your AIUXSLABS account." canonicalPath="/signup" noindex={true}>
+  <AuthShell title="Create account" subtitle="Use email and password to get started.">
+    <SignupForm client:load />
+  </AuthShell>
+</MainLayout>

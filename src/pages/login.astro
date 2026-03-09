@@ -1,0 +1,10 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import AuthShell from '@/components/auth/AuthShell.astro';
+import LoginForm from '@/components-islands/LoginForm';
+---
+<MainLayout title="Log in | AIUXSLABS" description="Log into your AIUXSLABS account." canonicalPath="/login" noindex={true}>
+  <AuthShell title="Log in" subtitle="Enter your credentials to access dashboard.">
+    <LoginForm client:load />
+  </AuthShell>
+</MainLayout>

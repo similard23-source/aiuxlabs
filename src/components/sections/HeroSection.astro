@@ -1,0 +1,20 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  primaryCta: { label: string; href: string };
+  secondaryCta: { label: string; href: string };
+}
+
+const { eyebrow, title, subtitle, primaryCta, secondaryCta } = Astro.props;
+---
+<section class="bg-gradient-to-b from-brand-50 to-transparent py-14 sm:py-20">
+  <h1 class="text-3xl font-bold tracking-tight sm:text-5xl">{title}</h1>
+  <p class="mt-4 max-w-2xl text-lg text-slate-700">{subtitle}</p>
+  <p class="mt-2 text-sm font-medium uppercase tracking-wider text-brand-700">{eyebrow}</p>
+  <div class="mt-6 flex gap-3">
+    <a href={primaryCta.href} class="rounded-md bg-brand-600 px-4 py-2 font-semibold text-white no-underline">{primaryCta.label}</a>
+    <a href={secondaryCta.href} class="rounded-md border border-slate-300 px-4 py-2 font-semibold no-underline">{secondaryCta.label}</a>
+  </div>
+</section>

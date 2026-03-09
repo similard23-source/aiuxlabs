@@ -1,0 +1,4 @@
+- Replace placeholder site URL and social handles.
+- Connect cookie guard to secure server-side token validation.
+- Add analytics/event tracking.
+- Add richer legal page content.

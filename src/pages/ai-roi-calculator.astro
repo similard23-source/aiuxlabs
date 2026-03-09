@@ -1,0 +1,60 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import FAQSection from '@/components/sections/FAQSection.astro';
+import TrustBlock from '@/components/sections/TrustBlock.astro';
+import ComparisonSection from '@/components/sections/ComparisonSection.astro';
+import InternalLinksSection from '@/components/sections/InternalLinksSection.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+import RoiCalculator from '@/components-islands/RoiCalculator';
+import LeadCaptureForm from '@/components-islands/LeadCaptureForm';
+import { aiRoiLanding } from '@/content/landings/ai-roi-calculator';
+import { faqSchema, howToSchema } from '@/lib/schema';
+---
+<MainLayout title={aiRoiLanding.seo.title} description={aiRoiLanding.seo.description} canonicalPath={aiRoiLanding.seo.canonical}>
+  <JsonLd data={faqSchema(aiRoiLanding.faq)} />
+  <JsonLd data={howToSchema('How to use AI ROI calculator', ['Enter team and cost inputs.', 'Add implementation and tooling costs.', 'Review savings, payback, and ROI scenarios.'])} />
+  <HeroSection {...aiRoiLanding.hero} />
+
+  <section class="mt-6 rounded-lg border border-brand-200 bg-brand-50 p-4">
+    <p class="text-sm font-semibold text-brand-700">Quick navigation</p>
+    <div class="mt-2 flex flex-wrap gap-3 text-sm">
+      <a href="#use-case-presets">Common SMB use cases</a>
+      <a href="#how-we-calculate">How we calculate</a>
+      <a href="#benchmarks">Typical benchmarks</a>
+    </div>
+  </section>
+
+  <section id="calculator" class="mt-8"><h2 class="mb-3 text-2xl font-semibold">Calculator</h2><RoiCalculator client:load /></section>
+
+  <section id="use-case-presets" class="mt-8 rounded-lg border border-slate-200 bg-white p-5">
+    <h2 class="text-2xl font-semibold">Common SMB use cases</h2>
+    <ul class="mt-3 list-disc pl-5 text-slate-700">
+      <li>Customer support automation</li>
+      <li>Sales outreach automation</li>
+      <li>Internal ops/SOP automation</li>
+    </ul>
+  </section>
+
+  <section id="how-we-calculate" class="mt-8 rounded-lg border border-slate-200 bg-white p-5">
+    <h2 class="text-2xl font-semibold">How we calculate</h2>
+    <p class="mt-2 text-slate-700">Monthly savings = labor savings + quality impact + uplift - monthly tool cost. Payback = implementation cost / monthly savings.</p>
+  </section>
+
+  <section id="benchmarks" class="mt-8 rounded-lg border border-slate-200 bg-white p-5">
+    <h2 class="text-2xl font-semibold">Typical benchmarks</h2>
+    <p class="mt-2 text-slate-700">Typical SMB ranges vary by function, team maturity, and process standardization. Use conservative assumptions first.</p>
+  </section>
+
+  <div class="mt-8"><ComparisonSection title="Manual vs AI-enabled planning" manual={["Spreadsheet upkeep", "Slow scenario changes"]} tool={["Fast scenario testing", "Clear payback and ROI"]} /></div>
+  <div class="mt-8"><TrustBlock /></div>
+
+  <section class="mt-8 rounded-xl bg-brand-700 p-8 text-white">
+    <h2 class="text-2xl font-semibold">Get custom AI automation ROI plan</h2>
+    <p class="mt-2 text-brand-50">Share your email and we will send a tailored ROI outline.</p>
+    <LeadCaptureForm client:load sourcePage="/ai-roi-calculator" buttonLabel="Get custom AI ROI plan" />
+  </section>
+
+  <div class="mt-8"><FAQSection items={aiRoiLanding.faq} /></div>
+  <div class="mt-8"><InternalLinksSection items={aiRoiLanding.internalLinks} /></div>
+</MainLayout>

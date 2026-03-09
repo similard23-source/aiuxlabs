@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  manual: string[];
+  tool: string[];
+}
+
+const { title, manual, tool } = Astro.props;
+---
+<section>
+  <h2 class="text-2xl font-semibold">{title}</h2>
+  <div class="mt-4 grid gap-4 md:grid-cols-2">
+    <div class="rounded-lg border border-slate-200 bg-white p-4">
+      <h3 class="font-semibold">Manual approach</h3>
+      <ul class="mt-2 list-disc pl-5 text-slate-700">
+        {manual.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+    <div class="rounded-lg border border-brand-200 bg-brand-50 p-4">
+      <h3 class="font-semibold text-brand-700">With this tool</h3>
+      <ul class="mt-2 list-disc pl-5 text-slate-700">
+        {tool.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>

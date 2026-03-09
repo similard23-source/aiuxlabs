@@ -1,0 +1,8 @@
+---
+interface Props { text?: string }
+const { text = 'Use these estimates for planning. Final business outcomes depend on execution quality and operating context.' } = Astro.props;
+---
+<section class="rounded-lg border border-slate-200 bg-white p-5 text-sm text-slate-600">
+  <h2 class="text-base font-semibold text-slate-900">Trust & Disclaimer</h2>
+  <p class="mt-2">{text}</p>
+</section>

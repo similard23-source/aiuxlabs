@@ -1,0 +1,55 @@
+---
+import MainLayout from '@/layouts/MainLayout.astro';
+import HeroSection from '@/components/sections/HeroSection.astro';
+import FAQSection from '@/components/sections/FAQSection.astro';
+import TrustBlock from '@/components/sections/TrustBlock.astro';
+import ComparisonSection from '@/components/sections/ComparisonSection.astro';
+import InternalLinksSection from '@/components/sections/InternalLinksSection.astro';
+import JsonLd from '@/components/seo/JsonLd.astro';
+import RoasCalculator from '@/components-islands/RoasCalculator';
+import LeadCaptureForm from '@/components-islands/LeadCaptureForm';
+import { shopifyRoasLanding } from '@/content/landings/shopify-roas-calculator';
+import { faqSchema, howToSchema } from '@/lib/schema';
+---
+<MainLayout title={shopifyRoasLanding.seo.title} description={shopifyRoasLanding.seo.description} canonicalPath={shopifyRoasLanding.seo.canonical}>
+  <JsonLd data={faqSchema(shopifyRoasLanding.faq)} />
+  <JsonLd data={howToSchema('How to use Shopify ROAS calculator', ['Enter order economics and spend values.', 'Set advanced toggles if applicable.', 'Read break-even outputs and target ROAS range.'])} />
+  <HeroSection {...shopifyRoasLanding.hero} />
+
+  <section id="calculator" class="mt-8"><h2 class="mb-3 text-2xl font-semibold">Calculator</h2><RoasCalculator client:load /></section>
+
+  <section class="mt-8 rounded-lg border border-slate-200 bg-white p-5">
+    <h2 class="text-2xl font-semibold">Advanced settings</h2>
+    <ul class="mt-3 list-disc pl-5 text-slate-700">
+      <li>Discount rate</li>
+      <li>Agency fee</li>
+      <li>Blended vs channel-specific CAC mode</li>
+    </ul>
+  </section>
+
+  <section class="mt-8 rounded-lg border border-slate-200 bg-white p-5">
+    <h2 class="text-2xl font-semibold">How to read your numbers</h2>
+    <p class="mt-2 text-slate-700">If current ROAS is below break-even, acquisition is value-destructive at current margin assumptions.</p>
+  </section>
+
+  <section class="mt-8 rounded-lg border border-slate-200 bg-white p-5">
+    <h2 class="text-2xl font-semibold">Common mistakes</h2>
+    <ul class="mt-3 list-disc pl-5 text-slate-700">
+      <li>Ignoring returns</li>
+      <li>Margin confusion (gross vs net)</li>
+      <li>Missing fulfillment costs</li>
+    </ul>
+  </section>
+
+  <div class="mt-8"><ComparisonSection title="Manual vs tool-driven analysis" manual={["Missing cost layers", "Unclear break-even targets"]} tool={["Full-cost assumptions", "Actionable ROAS range"]} /></div>
+  <div class="mt-8"><TrustBlock /></div>
+
+  <section class="mt-8 rounded-xl bg-brand-700 p-8 text-white">
+    <h2 class="text-2xl font-semibold">Get a custom profitability teardown for your store</h2>
+    <p class="mt-2 text-brand-50">Leave your email and we will send a tailored profitability checklist.</p>
+    <LeadCaptureForm client:load sourcePage="/shopify-roas-calculator" buttonLabel="Get teardown" />
+  </section>
+
+  <div class="mt-8"><FAQSection items={shopifyRoasLanding.faq} /></div>
+  <div class="mt-8"><InternalLinksSection items={shopifyRoasLanding.internalLinks} /></div>
+</MainLayout>

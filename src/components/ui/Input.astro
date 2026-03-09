@@ -1,0 +1,8 @@
+---
+interface Props { id: string; name: string; type?: string; label: string; required?: boolean; }
+const { id, name, type = 'text', label, required = false } = Astro.props;
+---
+<label class="block text-sm" for={id}>
+  <span>{label}</span>
+  <input id={id} name={name} type={type} required={required} class="mt-1 w-full rounded border border-slate-300 px-3 py-2" />
+</label>

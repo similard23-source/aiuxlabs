@@ -1,0 +1,11 @@
+---
+interface Option { label: string; value: string }
+interface Props { id: string; name: string; label: string; options: Option[]; }
+const { id, name, label, options } = Astro.props;
+---
+<label class="block text-sm" for={id}>
+  <span>{label}</span>
+  <select id={id} name={name} class="mt-1 w-full rounded border border-slate-300 px-3 py-2">
+    {options.map((option) => <option value={option.value}>{option.label}</option>)}
+  </select>
+</label>

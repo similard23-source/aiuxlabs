@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string;
+  copy: string;
+  href?: string;
+  label?: string;
+}
+
+const { title, copy, href = '/signup', label = 'Create free account' } = Astro.props;
+---
+<section class="rounded-xl bg-brand-700 p-8 text-white">
+  <h2 class="text-2xl font-semibold">{title}</h2>
+  <p class="mt-2 max-w-2xl text-brand-50">{copy}</p>
+  <a href={href} class="mt-5 inline-block rounded-md bg-white px-4 py-2 font-semibold text-brand-700 no-underline">{label}</a>
+</section>
