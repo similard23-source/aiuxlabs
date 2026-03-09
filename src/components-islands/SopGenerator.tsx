@@ -25,6 +25,16 @@ export default function SopGenerator() {
           <button className="rounded bg-brand-600 px-3 py-2 text-sm font-semibold text-white" onClick={() => navigator.clipboard.writeText(output)}>Copy</button>
           <button className="rounded border border-slate-300 px-3 py-2 text-sm">Download markdown (soon)</button>
         </div>
+
+        <div className="mt-4 rounded-xl border-2 border-brand-300 bg-brand-100 p-4 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">Basic mode</p>
+          <p className="mt-1 text-sm text-slate-800">
+            This is a baseline SOP generator. For advanced templates, richer exports, and progressive workflows, create an account.
+          </p>
+          <a href="/signup" className="mt-3 inline-block rounded-lg bg-brand-700 px-4 py-2 text-sm font-semibold text-white no-underline">
+            Unlock advanced generator
+          </a>
+        </div>
       </div>
     </div>
   );

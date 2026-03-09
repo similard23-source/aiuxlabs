@@ -93,6 +93,16 @@ export default function RoiCalculator() {
             <p>Aggressive: <strong>{money(result.scenarios.aggressive)}</strong></p>
           </div>
         </div>
+
+        <div className="mt-4 rounded-xl border-2 border-brand-300 bg-brand-100 p-4 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">Basic mode</p>
+          <p className="mt-1 text-sm text-slate-800">
+            This is a baseline calculator. For advanced, more accurate and progressive planning tools, create an account.
+          </p>
+          <a href="/signup" className="mt-3 inline-block rounded-lg bg-brand-700 px-4 py-2 text-sm font-semibold text-white no-underline">
+            Unlock advanced calculator
+          </a>
+        </div>
       </div>
     </div>
   );

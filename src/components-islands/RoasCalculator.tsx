@@ -100,6 +100,16 @@ export default function RoasCalculator() {
           <p className="text-xs uppercase tracking-wide text-brand-700">CAC mode note</p>
           <p className="mt-1 text-sm text-brand-700">{result.modeNote}</p>
         </div>
+
+        <div className="mt-4 rounded-xl border-2 border-brand-300 bg-brand-100 p-4 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">Basic mode</p>
+          <p className="mt-1 text-sm text-slate-800">
+            This is a baseline calculator. For advanced and more accurate profitability modeling, create an account.
+          </p>
+          <a href="/signup" className="mt-3 inline-block rounded-lg bg-brand-700 px-4 py-2 text-sm font-semibold text-white no-underline">
+            Unlock advanced calculator
+          </a>
+        </div>
       </div>
     </div>
   );
